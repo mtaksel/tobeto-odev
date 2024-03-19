@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 
 class Test_Sauce:
-    def test_invalid_login(self):
+    def test_valid_login(self):
         driver = webdriver.Chrome()
         driver.maximize_window()
         driver.get("https://www.saucedemo.com/")
@@ -25,4 +25,4 @@ class Test_Sauce:
 
 
 testClass = Test_Sauce()
-testClass.test_invalid_login()
+testClass.test_valid_login()
