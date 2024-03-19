@@ -1,4 +1,5 @@
-##from selenium import webdriver
+```
+from selenium import webdriver
 ##from selenium.webdriver.common.by import By
 ##from time import sleep
 
@@ -10,3 +11,4 @@
 ##find_element(By.TAG_NAME, "tag name")  #HTML etiket adına göre öğeyi bulur.
 ##find_element(By.CLASS_NAME, "class name")  #CSS sınıf adına göre öğeyi bulur.
 ##find_element(By.CSS_SELECTOR, "css selector")  #CSS seçiciye göre öğeyi bulur.
+```
