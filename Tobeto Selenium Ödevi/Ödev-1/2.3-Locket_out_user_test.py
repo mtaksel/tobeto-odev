@@ -18,7 +18,6 @@ class Test_Sauce:
         loginButton.click()
         sleep(2)
         errorMessage = driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")
-        #print(errorMessage.text)
         testResult = errorMessage.text == "Epic sadface: Sorry, this user has been locked out."
         print(f"TEST SONUCU: {testResult}")
 
