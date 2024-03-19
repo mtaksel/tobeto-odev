@@ -18,7 +18,6 @@ class Test_Sauce:
         loginButton.click()
         sleep(2)
         errorMessage = driver.find_element(By.XPATH,"//*[@id='header_container']/div[1]/div[2]/div")
-        #print(errorMessage.text)
         testResult = errorMessage == driver.find_element(By.XPATH,"//*[@id='header_container']/div[1]/div[2]/div")
         print(f"TEST SONUCU: {testResult}")
         listCountTest = driver.find_elements(By.CLASS_NAME, "inventory_item")
