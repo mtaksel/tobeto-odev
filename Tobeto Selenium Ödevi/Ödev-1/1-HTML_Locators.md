@@ -1,8 +1,4 @@
 ```
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from time import sleep
-
 find_element(By.ID, "id") #Öğeyi HTML ID'sine göre bulur.
 find_element(By.NAME, "name")  #Öğeyi HTML name özelliğine göre bulur.
 find_element(By.XPATH, "xpath")  #Öğeyi XPATH ifadesine göre bulur.
