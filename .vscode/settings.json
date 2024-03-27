@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "Tobeto Selenium Ödevi"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
