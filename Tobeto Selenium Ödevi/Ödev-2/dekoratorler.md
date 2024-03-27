@@ -1,15 +1,50 @@
+1. @pytest.fixture
 ```
-@pytest.fixture: Bu decorator, fixture fonksiyonlarını parametreli hale getirir. Testlerde kullanılan veri veya kaynakları hazırlamak için kullanılır.
+Bu decorator, testlerde kullanılan bir fixture (araç) oluşturmak için kullanılır. Fixture’lar, testlerin çalışma ortamını hazırlamak, tekrar kullanılabilir test verileri sağlamak veya diğer hazırlık görevlerini gerçekleştirmek için kullanılır.
 ```
+
+2. @pytest.mark.parametrize
 ```
-@pytest.mark.parametrize: Bu decorator, test fonksiyonlarına birden fazla argüman seti veya fixture’ı tanımlamak için kullanılır. Örneğin, farklı giriş değerleri için aynı test fonksiyonunu çalıştırmak istediğinizde kullanabilirsiniz.
+Bu decorator, aynı test fonksiyonunu farklı parametrelerle birden fazla kez çağırmak için kullanılır. Bu, aynı mantığı farklı girişlerle test etmenin etkili bir yoludur.
 ```
+
+3. @pytest.mark.skip ve @pytest.mark.skipif
 ```
-@pytest.mark.skip: Bu decorator, belirli bir test fonksiyonunu her zaman atlamak için kullanılır. Örneğin, henüz tamamlanmamış veya geçici olarak devre dışı bırakılmış testleri işaretlemek için kullanılabilir.
+Bu decorator’ler, belirli koşullar altında testleri atlamak için kullanılır. @pytest.mark.skip her zaman testi atlar, @pytest.mark.skipif ise belirli bir koşul sağlandığında testi atlar.
 ```
+4. @pytest.mark.xfail
 ```
-@pytest.mark.skipif: Bu decorator, belirli bir koşulun sağlandığı durumlarda test fonksiyonunu atlamak için kullanılır. Örneğin, belirli bir işletim sistemi veya Python sürümü için testi atlamak istediğinizde kullanabilirsiniz.
+Bu decorator, testin bilerek başarısız olmasını beklediğimizi belirtmek için kullanılır. Yani, test hata vermese bile başarılı kabul edilmez.
 ```
+5. @pytest.mark.usefixtures
 ```
-@pytest.mark.usefixtures: Bu decorator, test fonksiyonlarına belirli bir fixture’ı otomatik olarak eklemek için kullanılır. Fixture’lar, testlerin çalışmasını sağlayan önemli bileşenlerdir.
+Bu decorator, bir test fonksiyonu veya test sınıfının çalıştırılması için belirli fixture’ları kullanmayı sağlar. Fixture’lar, testlerin öncesi veya sonrası gibi belirli durumları hazırlamak veya temizlemek için kullanılan kaynaklardır.
+```
+6. @pytest.mark.timeout
+```
+Bu decorator, belirli bir test fonksiyonunun belirli bir süre içinde tamamlanmasını sağlar.
+```
+7. @pytest.fixture(autouse=True)
+```
+Bu decorator, bir fixture’ın test sınıfındaki her test fonksiyonu tarafından otomatik olarak kullanılmasını sağlar.
+```
+
+8. @pytest.yield_fixture
+```
+Bu decorator, bir fixture’ın test fonksiyonu tarafından kullanıldıktan sonra serbest bırakılmasını sağlar.
+```
+
+9. @pytest.raises
+```
+Bu decorator, belirli bir kodun belirli bir hatayı oluşturmasını sağlar.
+```
+
+10. @pytest.warns
+```
+Bu decorator, belirli bir kodun belirli bir uyarıyı oluşturmasını sağlar.
+```
+
+11. @pytest.deprecated
+```
+Bu decorator, belirli bir fonksiyonun veya özelliğin kullanımının eskimiş olduğunu gösterir.
 ```
