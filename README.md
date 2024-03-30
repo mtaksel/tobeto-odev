@@ -1,1 +1,1 @@
-###   TOBETO eğitimi boyunca yaptığım Python Odevleri   ###
+###   TOBETO eğitimi boyunca yaptığım Selenium-Python Otomasyon Odevleri   ###

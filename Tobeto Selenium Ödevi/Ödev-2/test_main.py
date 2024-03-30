@@ -7,11 +7,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 import pytest
 
 class Test_Sauce():
-    def __init__(self):
+
+    def setup_method(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get("https://www.saucedemo.com/")
-
+    
+    def teardown_method(self):
+        self.driver.quit()
+    
     def getData():
         return [("1","1"),("abc","123"),("deneme","secret_sauce")]
 
@@ -41,7 +45,6 @@ class Test_Sauce():
         loginButton.click()
         errorMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")))
         assert errorMessage.text == "Epic sadface: Sorry, this user has been locked out."
-        
 
     def test_empty_pass_login(self):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
@@ -54,7 +57,6 @@ class Test_Sauce():
         loginButton.click()
         errorMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")))
         assert errorMessage.text == "Epic sadface: Password is required"
-        
 
     def test_empty_login(self):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
@@ -65,8 +67,8 @@ class Test_Sauce():
         loginButton.click()
         errorMessage = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")))
         assert errorMessage.text == "Epic sadface: Username is required"
-        
-    def add_to_cart(self):
+
+    def test_add_to_cart(self):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"password")))
         actions = ActionChains(self.driver)
@@ -81,8 +83,8 @@ class Test_Sauce():
         checkout.click()
         bikeLight = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "/html/body/div/div/div/div[2]/div/div[1]/div[3]/div[2]/a/div")))
         assert bikeLight.text == "Sauce Labs Bike Light"
-
-    def remove_from_card(self):
+         
+    def test_remove_from_card(self):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"password")))
         actions = ActionChains(self.driver)
@@ -96,11 +98,10 @@ class Test_Sauce():
         checkout = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "/html/body/div/div/div/div[1]/div[1]/div[3]/a")))
         checkout.click()
         removefromCard = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "//*[@id='remove-sauce-labs-bike-light']")))
-        removefromCard.click
-        sleep(2)
-    
+        removefromCard.click()
+
     @pytest.mark.parametrize("username,password",getData())
-    def invalid_login(self,username,password):
+    def test_invalid_login(self,username,password):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"password")))
         actions = ActionChains(self.driver)
@@ -112,7 +113,7 @@ class Test_Sauce():
         errorMessage =WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3")))
         assert errorMessage.text == "Epic sadface: Username and password do not match any user in this service"
 
-    def checkout_info(self):
+    def test_empty_checkout_info(self):
         userNameInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"user-name")))
         passwordInput = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.ID,"password")))
         actions = ActionChains(self.driver)
@@ -129,5 +130,5 @@ class Test_Sauce():
         checkoutButton.click()
         continueButton = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "//*[@id='continue']")))
         continueButton.click()
-        errorMsg = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "data-test='error'")))
+        errorMsg = WebDriverWait(self.driver,5).until(ec.visibility_of_element_located((By.XPATH, "//*[@id='checkout_info_container']/div/form/div[1]/div[4]/h3")))
         assert errorMsg.text == "Error: First Name is required"
