@@ -4,12 +4,12 @@ from time import sleep
 from selenium.webdriver.support.wait import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as ec 
 from selenium.webdriver.common.action_chains import ActionChains 
+from webdriver_manager.chrome import ChromeDriverManager
 import pytest
 
 class Test_Sauce():
-
     def setup_method(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.maximize_window()
         self.driver.get("https://www.saucedemo.com/")
     
